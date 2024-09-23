@@ -4,6 +4,7 @@ app\ecommerce\jwt\JwtAuthenticationFilter.class
 app\ecommerce\modules\inventory\model\ProductoRequest$ProductoRequestBuilder.class
 app\ecommerce\config\ApplicationConfig.class
 app\ecommerce\modules\usuario\repository\RoleRepository.class
+app\ecommerce\modules\usuario\services\RoleServices.class
 app\ecommerce\controller\UserController.class
 app\ecommerce\auth\AuthService.class
 app\ecommerce\modules\usuario\repository\PermisoRepository.class
@@ -13,6 +14,7 @@ app\ecommerce\config\SecurityConfig.class
 app\ecommerce\auth\AuthResponse.class
 app\ecommerce\modules\usuario\model\Permiso$PermisoBuilder.class
 app\ecommerce\modules\manage\model\Branch.class
+app\ecommerce\modules\usuario\model\RoleRequest.class
 app\ecommerce\modules\usuario\controller\RoleController.class
 app\ecommerce\modules\inventory\services\ProductoService.class
 app\ecommerce\modules\inventory\repository\CategoryRepository.class
@@ -36,6 +38,7 @@ app\ecommerce\modules\inventory\controller\CategoriaController.class
 app\ecommerce\EcommerceApplication.class
 app\ecommerce\modules\inventory\model\ProductoRequest.class
 app\ecommerce\jwt\JwtService.class
+app\ecommerce\modules\usuario\model\RoleRequest$RoleRequestBuilder.class
 app\ecommerce\auth\RegisterRequest.class
 app\ecommerce\modules\inventory\model\Categoria$CategoriaBuilder.class
 app\ecommerce\modules\inventory\repository\ProductoRepository.class
