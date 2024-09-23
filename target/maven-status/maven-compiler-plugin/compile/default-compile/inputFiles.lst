@@ -26,7 +26,9 @@ C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\usuario\controller\RoleController.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\usuario\model\Permiso.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\usuario\model\Role.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\usuario\model\RoleRequest.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\usuario\repository\PermisoRepository.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\usuario\repository\RoleRepository.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\usuario\services\RoleServices.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\repository\UserRepository.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\utils\Gender.java
