@@ -54,9 +54,9 @@ public class UserService {
         
         if (userExist.isPresent()) {
             User user = userExist.get();
-            Role role = roleRepository.findById(user.getRole().getId())
+            Role role = roleRepository.findById(updatedUserDetails.getRoleId())
             .orElseThrow(() -> new IllegalArgumentException("Role not found"));
-            Branch branch = branchRepository.findById(user.getBranch().getId())
+            Branch branch = branchRepository.findById(updatedUserDetails.getBranchId())
             .orElseThrow(() -> new IllegalArgumentException("Role not found"));
             if (updatedUserDetails.getUsername() != null) {
                 user.setUsername(updatedUserDetails.getUsername());
