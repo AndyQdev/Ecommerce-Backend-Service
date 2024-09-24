@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,5 +46,13 @@ public class UserController {
     public ResponseEntity<User> patchUser(@PathVariable String id, @RequestBody RegisterRequest user) {
         Optional<User> updatedUser = userService.patchUser(id, user);
         return updatedUser.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
+        return userRepository.findById(id).map(user -> {
+            userRepository.delete(user);
+            return ResponseEntity.noContent().<Void>build(); // Aseguramos que el tipo sea ResponseEntity<Void>
+        }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
