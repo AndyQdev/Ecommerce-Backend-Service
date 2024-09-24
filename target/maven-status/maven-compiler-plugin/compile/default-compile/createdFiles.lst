@@ -42,4 +42,5 @@ app\ecommerce\modules\usuario\model\RoleRequest$RoleRequestBuilder.class
 app\ecommerce\auth\RegisterRequest.class
 app\ecommerce\modules\inventory\model\Categoria$CategoriaBuilder.class
 app\ecommerce\modules\inventory\repository\ProductoRepository.class
+app\ecommerce\service\UserService.class
 app\ecommerce\modules\usuario\controller\PermisoController.class

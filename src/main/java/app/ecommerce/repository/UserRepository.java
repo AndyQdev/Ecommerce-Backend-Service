@@ -10,4 +10,5 @@ import app.ecommerce.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
     Optional<User> findByUsername(String username);
+    // User finById(String id);
 }
