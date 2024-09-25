@@ -49,10 +49,10 @@ public class UserController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
+    public ResponseEntity<User> deleteUser(@PathVariable String id) {
         return userRepository.findById(id).map(user -> {
-            userRepository.delete(user);
-            return ResponseEntity.noContent().<Void>build(); // Aseguramos que el tipo sea ResponseEntity<Void>
-        }).orElseGet(() -> ResponseEntity.notFound().build());
+            userRepository.delete(user); // Elimina el usuario
+            return ResponseEntity.ok(user); // Retorna el usuario eliminado
+        }).orElseGet(() -> ResponseEntity.notFound().build()); // Retorna 404 si no se encuentra el usuario
     }
 }

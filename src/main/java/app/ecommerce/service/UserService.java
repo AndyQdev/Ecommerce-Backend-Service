@@ -2,6 +2,7 @@
 package app.ecommerce.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 // import org.springframework.beans.BeanUtils;
 
@@ -26,6 +27,9 @@ public class UserService {
     
     @Autowired
     private BranchRepository branchRepository; 
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     // public Optional<User> patchUser(String id, RegisterRequest updatedUserDetails) {
     //     return userRepository.findById(id).map(existingUser -> {
@@ -62,7 +66,7 @@ public class UserService {
                 user.setUsername(updatedUserDetails.getUsername());
             }
             if (updatedUserDetails.getPassword() != null) {
-                user.setPassword(updatedUserDetails.getPassword());
+                user.setPassword(passwordEncoder.encode(updatedUserDetails.getPassword()));
             }
             if (updatedUserDetails.getDireccion() != null) {
                 user.setDireccion(updatedUserDetails.getDireccion());

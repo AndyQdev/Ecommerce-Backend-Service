@@ -17,4 +17,5 @@ public class ProductoRequest {
     float precio; 
     String marca; 
     String categoria_id;
+    String branch_id;
 }

@@ -1,6 +1,5 @@
 package app.ecommerce.modules.inventory.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
+
+import app.ecommerce.modules.manage.model.Branch;
 
 @Data
 @Builder
@@ -39,8 +40,12 @@ public class Producto {
     private String marca; // Marca del producto
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
+    @JoinColumn(name = "categoria", nullable = false)
     private Categoria categoria; // Relación con la entidad Categoría
+
+    @ManyToOne
+    @JoinColumn(name = "branch", nullable = false) // Relación con sucursal
+    private Branch branch; // Un producto pertenece a una sucursal
 
     // PrePersist para generar el UUID automáticamente
     @PrePersist
