@@ -7,30 +7,42 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import app.ecommerce.model.Cliente;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
-
 @Service
 public class JwtService {
 
     private static final String SECRET_KEY = "523ASDASFDSDF21SAD53SAD5AS43D5S3D5ASD512JKJOQONQIWUBQUBWEBU";
 
+    // Generar token para UserDetails
     public String getToken(UserDetails user) {
-        return getToken(new HashMap<>(), user);
+        return getToken(new HashMap<>(), user.getUsername());
     }
 
-    private String getToken(Map<String, Object> extraClaims, UserDetails user) {
+    private String getToken(Map<String, Object> extraClaims, String subject) {
         return Jwts
                .builder()
-               .setClaims(extraClaims) // Puedes agregar claims adicionales aquí
-               .setSubject(user.getUsername())
+               .setClaims(extraClaims)
+               .setSubject(subject)
                .setIssuedAt(new Date(System.currentTimeMillis()))
                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24)) // Expira en 24 minutos
-               .signWith(getKey(), SignatureAlgorithm.HS256) // Firma con la clave secreta
+               .signWith(getKey(), SignatureAlgorithm.HS256)
+               .compact();
+    }
+
+    // Generar token sin expiración para clientes
+    public String getTokenWithoutExpiration(Cliente client) {
+        return Jwts
+               .builder()
+               .setClaims(new HashMap<>())
+               .setSubject(client.getEmail())
+               .setIssuedAt(new Date(System.currentTimeMillis())) 
+               .signWith(getKey(), SignatureAlgorithm.HS256)
                .compact();
     }
 
@@ -39,55 +51,63 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
+    // Obtener el sujeto (username o email) del token
     public String getUsernameFromToken(String token) {
         return getClaim(token, Claims::getSubject);
     }
 
+    // Validar token para UserDetails
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = getUsernameFromToken(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    // Método para validar un token en general (por ejemplo, en el endpoint /auth/check-token)
+    // Validar token en general
     public boolean isTokenValid(String token) {
         try {
+            System.out.println("Validando token");
             Jwts.parserBuilder().setSigningKey(getKey()).build().parseClaimsJws(token);
-            return true; // Si no hay excepción, el token es válido
+            System.out.println("Token válido");
+            return true;
         } catch (Exception e) {
-            return false; // El token no es válido o ha expirado
+            return false;
         }
     }
 
-    // Método para extraer el nombre de usuario (subject) del token
-    public String getUsernameFromTokenFront(String token) {
-        return Jwts.parserBuilder()
-                   .setSigningKey(getKey())
-                   .build()
-                   .parseClaimsJws(token)
-                   .getBody()
-                   .getSubject();
-    }
-
-    // Cambiar aquí: este método ahora utiliza parseClaimsJws para JWTs firmados
+    // Obtener los claims
     private Claims getAllClaims(String token) {
         return Jwts
                .parserBuilder()
                .setSigningKey(getKey())
                .build()
-               .parseClaimsJws(token) // Cambia a parseClaimsJws para tokens firmados
+               .parseClaimsJws(token)
                .getBody();
     }
 
+    // Obtener claim específico
     public <T> T getClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = getAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
     private Date getExpiration(String token) {
-        return getClaim(token, Claims::getExpiration);
+        try {
+            return getClaim(token, Claims::getExpiration);
+        } catch (Exception e) {
+            // Si no se puede obtener la expiración, devolvemos null
+            return null;
+        }
     }
 
     private boolean isTokenExpired(String token) {
-        return getExpiration(token).before(new Date());
+        Date expiration = getExpiration(token);
+        
+        // Si el token no tiene fecha de expiración, significa que no expira (token para clientes)
+        if (expiration == null) {
+            return false; // El token es válido indefinidamente
+        }
+    
+        return expiration.before(new Date());
     }
+
 }

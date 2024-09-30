@@ -37,6 +37,7 @@ public class ProductoController {
         .orElseThrow(() -> new IllegalArgumentException("Producto not found with id: " + id));
     }
 
+    
     @PostMapping
     public Producto createProducto(@RequestBody ProductoRequest producto){
 
