@@ -50,6 +50,7 @@ public class AuthService {
         String token = jwtService.getTokenWithoutExpiration(cliente);
         return AuthResponse.builder()
         .token(token)
+        .cliente(cliente)
         .build();
     }
 
@@ -60,7 +61,7 @@ public class AuthService {
         .direccion(request.getDireccion())
         .telefono(request.getTelefono())
         .nombre(request.getNombre())
-        .isActive(request.isActive)
+        .isActive(true)
         .build();
         
         clienteRepository.save(client);

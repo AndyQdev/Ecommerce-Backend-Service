@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-import app.ecommerce.model.User;
+import app.ecommerce.model.Cliente;
 
 @Data
 @Builder
@@ -22,8 +22,8 @@ public class Reserva {
     private String id; // Usamos UUID como identificador
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user; // Relación con el usuario que realiza la reserva
+    @JoinColumn(name = "cliente", nullable = false)
+    private Cliente cliente; // Relación con el usuario que realiza la reserva
 
     @ManyToOne
     @JoinColumn(name = "producto_id", nullable = false)
@@ -44,6 +44,6 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva [id=" + id + ", user=" + user + ", product=" + product + ", fechaReserva=" + fechaReserva + ", estado=" + estado + "]";
+        return "Reserva [id=" + id + ", user=" + cliente + ", product=" + product + ", fechaReserva=" + fechaReserva + ", estado=" + estado + "]";
     }
 }

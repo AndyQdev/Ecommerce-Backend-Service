@@ -35,9 +35,9 @@ public class ReservaController {
         .orElseThrow(() -> new IllegalArgumentException("Producto not found with id: " + id));
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Reserva>> getReservasByUserId(@PathVariable String userId) {
-        List<Reserva> reservas = reservaRepository.findByUserId(userId);
+    @GetMapping("/cliente/{clienteId}")
+    public ResponseEntity<List<Reserva>> getReservasByClienteId(@PathVariable String clienteId) {
+        List<Reserva> reservas = reservaRepository.findByClienteId(clienteId);
         
         if (reservas.isEmpty()) {
             return ResponseEntity.notFound().build();

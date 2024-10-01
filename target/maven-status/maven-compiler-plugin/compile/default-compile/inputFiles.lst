@@ -15,6 +15,13 @@ C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\model\Cliente.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\model\CustomUserDetails.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\model\User.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\compras\controller\CarritoController.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\compras\model\CarritoDeCompras.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\compras\model\ItemCarrito.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\compras\model\ItemRequest.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\compras\repositorys\CarritoRepository.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\compras\repositorys\ItemCarritoRepository.java
+C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\compras\services\CarritoService.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\inventory\controller\CategoriaController.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\inventory\controller\ProductoController.java
 C:\Universidad\6to semestre\Sistema de informacion ll\ProyectoOficial1\ecommerce\src\main\java\app\ecommerce\modules\inventory\controller\ReservaController.java

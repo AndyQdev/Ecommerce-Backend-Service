@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservaRequest {
-    String userId;
+    String clienteId;
     String productoId; 
     String fechaReserva; 
     String estado;

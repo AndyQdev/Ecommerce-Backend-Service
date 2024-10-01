@@ -10,5 +10,5 @@ import app.ecommerce.modules.inventory.model.Reserva;
 @Repository
 public interface ReservaRepository extends JpaRepository<Reserva, String>{
     // Método para buscar reservas por el ID de usuario
-    List<Reserva> findByUserId(String userId);
+    List<Reserva> findByClienteId(String clienteId);
 }
